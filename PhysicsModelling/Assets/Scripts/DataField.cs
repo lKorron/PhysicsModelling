@@ -6,19 +6,17 @@ using UnityEngine.UI;
 [RequireComponent(typeof(InputField))]
 public class DataField : MonoBehaviour
 {
-    [SerializeField] private BodyTransformer _body;
-    private InputField _inputField;
+    [SerializeField] protected BodyTransformer _body;
+    protected InputField _inputField;
 
-    private void Start()
+    protected virtual void Start()
     {
         _inputField = GetComponent<InputField>();
-        _inputField.onEndEdit.AddListener(_body.ChangeHeight);
         _inputField.onValueChanged.AddListener(CheckFormat);
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
-        _inputField.onEndEdit.RemoveAllListeners();
         _inputField.onValueChanged.RemoveAllListeners();
     }
 
