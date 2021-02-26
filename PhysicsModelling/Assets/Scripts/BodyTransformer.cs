@@ -22,11 +22,8 @@ public class BodyTransformer : MonoBehaviour
 
     public void ChangeHeight(string stringHeight)
     {
-        float height;
-
-        if (float.TryParse(stringHeight, out height))
+        if (float.TryParse(stringHeight, out float height))
             ChangeHeight(height);
-        
     }
 
 
@@ -35,5 +32,11 @@ public class BodyTransformer : MonoBehaviour
         _rigidbody.mass = mass;
         var scaler = Mathf.Pow(mass, 1f / 3f);
         _transform.localScale = Vector3.one * scaler;
+    }
+
+    public void ChangeMass(string stringMass)
+    {
+        if (float.TryParse(stringMass, out float mass))
+            ChangeMass(mass);
     }
 }

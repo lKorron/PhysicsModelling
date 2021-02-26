@@ -6,29 +6,28 @@ using UnityEngine.UI;
 [RequireComponent(typeof(InputField))]
 public class DataField : MonoBehaviour
 {
-    [SerializeField] private BodyTransformer _body;
-    private InputField _inputField;
+    [SerializeField] private string _placeholderText;
+    [SerializeField] protected BodyTransformer _body;
+    protected InputField _inputField;
 
-    private void Start()
+    protected virtual void Start()
     {
+        if (_body == null)
+            _body = FindObjectOfType<BodyTransformer>();
+
         _inputField = GetComponent<InputField>();
-        _inputField.onEndEdit.AddListener(_body.ChangeHeight);
         _inputField.onValueChanged.AddListener(CheckFormat);
+        _inputField.placeholder.GetComponent<Text>().text = _placeholderText;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
-        _inputField.onEndEdit.RemoveAllListeners();
         _inputField.onValueChanged.RemoveAllListeners();
     }
 
     private void CheckFormat(string text)
     {
-        float enteredHeight;
-
-        if (float.TryParse(text, out enteredHeight) == false || enteredHeight < 0)
-        {
+        if (float.TryParse(text, out float enteredHeight) == false || enteredHeight < 0)
             _inputField.text = "";
-        }
     }
 }
