@@ -26,7 +26,6 @@ public class BodyTransformer : MonoBehaviour
             ChangeHeight(height);
     }
 
-
     public void ChangeMass(float mass)
     {
         _rigidbody.mass = mass;
@@ -39,4 +38,10 @@ public class BodyTransformer : MonoBehaviour
         if (float.TryParse(stringMass, out float mass))
             ChangeMass(mass);
     }
+
+    public void ChangeGravityScale(float gravityScale)
+    {
+        
+    }
+
 }
