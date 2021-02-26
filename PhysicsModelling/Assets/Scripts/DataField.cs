@@ -22,11 +22,7 @@ public class DataField : MonoBehaviour
 
     private void CheckFormat(string text)
     {
-        float enteredHeight;
-
-        if (float.TryParse(text, out enteredHeight) == false || enteredHeight < 0)
-        {
+        if (float.TryParse(text, out float enteredHeight) == false || enteredHeight < 0)
             _inputField.text = "";
-        }
     }
 }
