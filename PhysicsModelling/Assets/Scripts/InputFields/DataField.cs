@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class DataField : MonoBehaviour
 {
     [SerializeField] private string _placeholderText;
-    [SerializeField] protected BodyTransformer _body;
+    [SerializeField] protected MechanicalTransformer _transformer;
     protected InputField _inputField;
 
     protected virtual void Start()
     {
-        if (_body == null)
-            _body = FindObjectOfType<BodyTransformer>();
+        if (_transformer == null)
+            _transformer = FindObjectOfType<MechanicalTransformer>();
 
         _inputField = GetComponent<InputField>();
         _inputField.onValueChanged.AddListener(CheckFormat);
