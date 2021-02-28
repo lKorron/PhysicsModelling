@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Transform))]
 public class MechanicalTransformer : MonoBehaviour
@@ -17,9 +19,15 @@ public class MechanicalTransformer : MonoBehaviour
         _transform.position = new Vector3(transform.position.x, height, transform.position.z);
     }
 
-    public virtual void SetHeight(string stringHeight)
+    public UnityAction<string> ParseActionToString(UnityAction<float> method)
     {
-        if (float.TryParse(stringHeight, out float height))
-            SetHeight(height);
+        UnityAction<string> parseMethod = (str) =>
+        {
+            if (float.TryParse(str, out float parsedValue))
+                method(parsedValue);
+        };
+
+        return parseMethod;
+
     }
 }
