@@ -23,9 +23,10 @@ public class DataField : MonoBehaviour
     protected virtual void OnDisable()
     {
         _inputField.onValueChanged.RemoveAllListeners();
+        _inputField.onEndEdit.RemoveAllListeners();
     }
 
-    private void CheckFormat(string text)
+    protected virtual void CheckFormat(string text)
     {
         if (float.TryParse(text, out float enteredHeight) == false || enteredHeight < 0)
             _inputField.text = "";

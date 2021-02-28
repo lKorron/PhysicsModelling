@@ -18,4 +18,14 @@ public class PlaneTransformer : MechanicalTransformer
     {
         _transform.rotation = Quaternion.Euler(degreeAngle, _transform.rotation.y, _transform.rotation.z);
     }
+
+    public void SetLength(float lenght)
+    {
+        _transform.localScale = new Vector3(transform.localScale.x, _transform.localScale.y, lenght);
+    }
+
+    public void SetWidth(float width)
+    {
+        _transform.localScale = new Vector3(width, transform.localScale.y, transform.localScale.z);
+    }
 }

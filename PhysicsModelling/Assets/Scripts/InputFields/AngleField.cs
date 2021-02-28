@@ -20,4 +20,12 @@ public class AngleField : DataField
         base.OnDisable();
         _inputField.onEndEdit.RemoveAllListeners();
     }
+
+    protected override void CheckFormat(string text)
+    {
+        if (float.TryParse(text, out _) == false && text != "-")
+        {
+            _inputField.text = "";
+        }
+    }
 }
