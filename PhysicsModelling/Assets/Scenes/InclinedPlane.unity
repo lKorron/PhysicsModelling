@@ -1221,7 +1221,7 @@ GameObject:
   - component: {fileID: 1739391010}
   - component: {fileID: 1739391009}
   m_Layer: 5
-  m_Name: LenghtInput
+  m_Name: LengthInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1260,7 +1260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8084f529f9e41659b59cd05087e91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _placeholderText: Enter a lenght
+  _placeholderText: Enter a length
   _transformer: {fileID: 1889882356}
 --- !u!114 &1739391010
 MonoBehaviour:
