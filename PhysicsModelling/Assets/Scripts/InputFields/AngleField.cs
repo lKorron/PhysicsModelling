@@ -6,13 +6,19 @@ using UnityEngine.Events;
 
 public class AngleField : DataField
 {
+    [SerializeField] private FixedBody _fixedBody;
     protected override void Start()
     {
         base.Start();
         PlaneTransformer _planeTransformer = _transformer as PlaneTransformer;
         UnityAction<string> action = _planeTransformer.ParseActionToString(_planeTransformer.SetAngle);
+        UnityAction<string> fixedBodyAction = (str) =>
+        {
+            _fixedBody.SetZPosition();
+        };
 
         _inputField.onEndEdit.AddListener(action);
+        _inputField.onEndEdit.AddListener(fixedBodyAction);
     }
 
     protected override void OnDisable()

@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class PlaneTransformer : MechanicalTransformer
 {
-    protected override void Start()
+    [SerializeField] private float _angle;
+    [SerializeField] private float _length;
+    [SerializeField] private float _height;
+
+    public float Angle => _angle;
+    public float Length => _length;
+
+    private void Awake()
     {
-        base.Start();
+        _length = Mathf.Abs(transform.localScale.z);
+        _angle = 0;
     }
 
     public override void SetHeight(float height)
@@ -17,11 +25,13 @@ public class PlaneTransformer : MechanicalTransformer
     public void SetAngle(float degreeAngle)
     {
         _transform.rotation = Quaternion.Euler(degreeAngle, _transform.rotation.y, _transform.rotation.z);
+        _angle = degreeAngle;
     }
 
     public void SetLength(float lenght)
     {
         _transform.localScale = new Vector3(transform.localScale.x, _transform.localScale.y, lenght);
+        _length = lenght;
     }
 
     public void SetWidth(float width)
