@@ -12,10 +12,4 @@ public class MassField : DataField
         UnityAction<string> action = bodyTransformer.ParseActionToString(bodyTransformer.SetMass);
         _inputField.onEndEdit.AddListener(action);
     }
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        _inputField.onEndEdit.RemoveAllListeners();
-    }
 }

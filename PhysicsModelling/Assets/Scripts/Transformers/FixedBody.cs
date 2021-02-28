@@ -2,23 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FixedBody : MonoBehaviour
+public class FixedBody : BodyTransformer
 {
     [SerializeField] private float _startHeight;
     [SerializeField] private float _startIndent;
     [SerializeField] private PlaneTransformer _planeTransformer;
 
-    private void Start()
+    protected override void Start()
     {
-        SetZPosition();
+        base.Start();
+        SetFixedPosition();
     }
 
-    private void Update()
-    {
-        SetZPosition();
-    }
-
-    public void SetZPosition()
+    public void SetFixedPosition()
     {
         var yPosition = _planeTransformer.gameObject.transform.position.y;
         var yProjection = _planeTransformer.Length * Mathf.Sin(_planeTransformer.Angle * Mathf.Deg2Rad);
@@ -31,5 +27,14 @@ public class FixedBody : MonoBehaviour
         transform.position = new Vector3(0, yPosition + yProjection + _startHeight, zPosition - zProjection + zDelta);
     }
 
-    
+    public override void SetHeight(float height)
+    {
+        _startHeight = height;
+    }
+
+    public void SetIndent(float indent)
+    {
+        _startIndent = indent;
+    }
+
 }
