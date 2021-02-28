@@ -12,9 +12,4 @@ public class HeightField : DataField
         _inputField.onEndEdit.AddListener(action);
     }
 
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        _inputField.onEndEdit.RemoveAllListeners();
-    }
 }

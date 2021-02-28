@@ -24,17 +24,20 @@ public class FixedBody : BodyTransformer
         var dynamicValue = Mathf.Round(Mathf.Cos(_planeTransformer.Angle * Mathf.Deg2Rad));
         var zDelta = _startIndent * dynamicValue;
 
+        transform.position = Vector3.zero; // used for remove acceleration
         transform.position = new Vector3(0, yPosition + yProjection + _startHeight, zPosition - zProjection + zDelta);
     }
 
     public override void SetHeight(float height)
     {
         _startHeight = height;
+        SetFixedPosition();
     }
 
     public void SetIndent(float indent)
     {
         _startIndent = indent;
+        SetFixedPosition();
     }
 
 }
