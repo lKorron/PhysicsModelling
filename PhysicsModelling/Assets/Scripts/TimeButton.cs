@@ -6,11 +6,11 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class TimeButton : MonoBehaviour
 {
-    [SerializeField] private string _stoppedTimeString;
-    [SerializeField] private string _startedTimeString;
+    [SerializeField] protected string _stoppedTimeString;
+    [SerializeField] protected string _startedTimeString;
     [SerializeField] private Button _button;
-    private Text _buttonText;
-    private bool _isTimeStopped;
+    protected Text _buttonText;
+    protected bool _isTimeStopped;
     
 
     protected virtual void Start()

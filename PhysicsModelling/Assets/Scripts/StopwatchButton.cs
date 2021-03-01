@@ -11,27 +11,33 @@ public class StopwatchButton : TimeButton
     private int _minutes;
     private int _seconds;
     private int _milliseconds;
+    private bool _isStopwatchStarted;
+
+    protected override void Start()
+    {
+        base.Start();
+        DisplayTime();
+        _isTimeStopped = true;
+        _buttonText.text = _stoppedTimeString;
+    }
 
     private void Update()
     {
-        ComputeTime();
-    }
-
-    public void StartStopwatch()
-    {
+        if (_isStopwatchStarted)
+            ComputeTime();
         
     }
 
     protected override void StartTime()
     {
         base.StartTime();
-        print("Start");
+        _isStopwatchStarted = true;
     }
 
     protected override void StopTime()
     {
         base.StopTime();
-        print("Stop");
+        _isStopwatchStarted = false;
     }
 
     private void DisplayTime()
@@ -43,7 +49,6 @@ public class StopwatchButton : TimeButton
 
     private void ComputeTime()
     {
-        
         _time += Time.deltaTime;
         _minutes = (int)(_time / 60 % 60);
         _seconds = (int)(_time % 60);

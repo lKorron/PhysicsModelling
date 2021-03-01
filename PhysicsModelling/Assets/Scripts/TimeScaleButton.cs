@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class TimeScaleButton : TimeButton
 {
+    protected override void Start()
+    {
+        base.Start();
+        _buttonText.text = _startedTimeString;
+    }
     protected override void StartTime()
     {
         base.StartTime();
