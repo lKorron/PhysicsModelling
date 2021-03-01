@@ -1,41 +1,55 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StopwatchButton : MonoBehaviour
+public class StopwatchButton : TimeButton
 {
     [SerializeField] private Text _text;
-    private Stopwatch _stopwatch;
-    private TimeSpan _timeSpan;
-
-    private void Start()
-    {
-        _stopwatch = new Stopwatch();
-        _timeSpan = _stopwatch.Elapsed;
-        StartStopwatch();
-    }
+    private float _time;
+    private int _minutes;
+    private int _seconds;
+    private int _milliseconds;
 
     private void Update()
     {
-        DisplayTime();
+        ComputeTime();
     }
 
     public void StartStopwatch()
     {
-        _stopwatch.Start();
         
+    }
+
+    protected override void StartTime()
+    {
+        base.StartTime();
+        print("Start");
+    }
+
+    protected override void StopTime()
+    {
+        base.StopTime();
+        print("Stop");
     }
 
     private void DisplayTime()
     {
-        string timeString = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-            _timeSpan.Hours, _timeSpan.Minutes, _timeSpan.Seconds,
-            _timeSpan.Milliseconds / 10);
+        string timeString = string.Format("{0:00}:{1:00}:{2:00}", _minutes, _seconds, _milliseconds);
         _text.text = timeString;
-        _stopwatch.Stop();
+
+    }
+
+    private void ComputeTime()
+    {
+        
+        _time += Time.deltaTime;
+        _minutes = (int)(_time / 60 % 60);
+        _seconds = (int)(_time % 60);
+        _milliseconds = (int)((_time - (int)_time) * 100);
+
+        DisplayTime();
     }
 
 }

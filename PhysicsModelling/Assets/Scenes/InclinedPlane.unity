@@ -2911,6 +2911,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742385294}
   m_CullTransparentMesh: 0
+--- !u!1 &1785766309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5382476420758050057, guid: 5cd40b29c6e3842999f468a3c1173e90, type: 3}
+  m_PrefabInstance: {fileID: 1947761066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1785766310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785766309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1a82a746991346dd8b1ad6be76b6513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stoppedTimeString: Start time
+  _startedTimeString: Stop time
+  _button: {fileID: 0}
 --- !u!1 &1787652263
 GameObject:
   m_ObjectHideFlags: 0
@@ -3354,6 +3374,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f21220fe41ea400e84aeb47e4ca0154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stoppedTimeString: Start
+  _startedTimeString: Stop
+  _button: {fileID: 0}
   _text: {fileID: 25821532}
 --- !u!1001 &1947761066
 PrefabInstance:
@@ -3450,7 +3473,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5382476420758050063, guid: 5cd40b29c6e3842999f468a3c1173e90, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5cd40b29c6e3842999f468a3c1173e90, type: 3}
 --- !u!1 &2116976032
 GameObject:
