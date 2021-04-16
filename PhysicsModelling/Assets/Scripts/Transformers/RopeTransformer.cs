@@ -20,8 +20,6 @@ public class RopeTransformer : MechanicalTransformer, ILengtheningTransformer
         _hingeJoint = GetComponent<HingeJoint>();
         _lineRenderer = GetComponent<LineRenderer>();
         _pendulumTransform = this.transform;
-        SetLength(8f);
-        SetPositionX(-4f);
         
     }
 
