@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using InputFields;
 using UnityEngine;
 
-public class PlaneTransformer : MechanicalTransformer
+public class PlaneTransformer : MechanicalTransformer, ILengtheningTransformer
 {
     [SerializeField] private float _angle;
     [SerializeField] private float _length;
@@ -37,10 +38,10 @@ public class PlaneTransformer : MechanicalTransformer
         _angle = degreeAngle;
     }
 
-    public void SetLength(float lenght)
+    public void SetLength(float length)
     {
-        _transform.localScale = new Vector3(transform.localScale.x, _transform.localScale.y, lenght);
-        _length = lenght;
+        _transform.localScale = new Vector3(transform.localScale.x, _transform.localScale.y, length);
+        _length = length;
     }
 
     public void SetWidth(float width)
