@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using InputFields;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class RopeTransformer : MechanicalTransformer
+public class RopeTransformer : MechanicalTransformer, ILengtheningTransformer
 {
     [SerializeField] private Transform _targetTransform;
     [SerializeField] private Transform _pendulumTransform;
@@ -29,7 +30,7 @@ public class RopeTransformer : MechanicalTransformer
         RenderRope(_width);
     }
 
-    private void SetLength(float length)
+    public void SetLength(float length)
     {
         _hingeJoint.autoConfigureConnectedAnchor = false;
         _hingeJoint.anchor = new Vector3(0, length, 0);

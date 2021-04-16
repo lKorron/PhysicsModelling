@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using InputFields;
 using UnityEngine;
 
-public class PlaneTransformer : MechanicalTransformer
+public class PlaneTransformer : MechanicalTransformer, ILengtheningTransformer
 {
     [SerializeField] private float _angle;
     [SerializeField] private float _length;
