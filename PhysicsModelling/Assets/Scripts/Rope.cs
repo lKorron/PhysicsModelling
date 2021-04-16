@@ -11,16 +11,33 @@ public class Rope : MonoBehaviour
     [SerializeField] private Material _ropeMaterial;
     [SerializeField] private float _width;
 
+    private HingeJoint _hingeJoint;
     private LineRenderer _lineRenderer;
 
     private void Start()
     {
+        _hingeJoint = GetComponent<HingeJoint>();
         _lineRenderer = GetComponent<LineRenderer>();
+        _pendulumTransform = this.transform;
+        SetLength(8f);
+        SetPositionX(-4f);
+        
     }
 
     private void Update()
     {
         RenderRope(_width);
+    }
+
+    private void SetLength(float length)
+    {
+        _hingeJoint.autoConfigureConnectedAnchor = false;
+        _hingeJoint.anchor = new Vector3(0, length, 0);
+    }
+
+    private void SetPositionX(float x)
+    {
+        transform.position = new Vector3(x, transform.position.y, transform.position.z);
     }
 
     private void RenderRope(float width)
